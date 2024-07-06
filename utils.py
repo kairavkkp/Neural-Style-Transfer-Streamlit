@@ -37,11 +37,13 @@ def transform_img(img):
 
 
 def imshow(image, title=None):
-    if len(image.shape) > 3:
-        image = tf.squeeze(image, axis=0)
-
-    image = np.squeeze(image)
-    return image
+    try:
+        if len(image.shape) > 3:
+            image = tf.squeeze(image, axis=0)
+        image = np.squeeze(image)
+        return image
+    except Exception as err:
+        return None
 
 
 def tensor_to_image(tensor):
